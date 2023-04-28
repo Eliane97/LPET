@@ -3,12 +3,9 @@ package org.example;
 import java.sql.*;
 import java.util.Properties;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-
     public static void main(String[] args) throws SQLException {
-// Conexion con mi base de datos en POstgres llamada lpet_bbdd
+        // Conexion con mi base de datos en Postgres llamada lpet_bbdd
         String url="jdbc:postgresql://localhost:5432/lpet_bbdd";
         Properties prop= new Properties();
         prop.setProperty("user","postgres");
