@@ -6,7 +6,6 @@ public class Usuario {
     private String correo_electronico;
     private String contrasena;
 
-    // Metodos Setters y getters
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
