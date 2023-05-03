@@ -4,12 +4,9 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.example.DAO.ImplementacionUsuarioDAO;
 import org.example.DAO.UsuarioDAO;
-import org.example.model.Usuario;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.sql.SQLException;
-import java.util.List;
 
 public class ManejadorUsuarios implements HttpHandler {
 
@@ -18,20 +15,11 @@ public class ManejadorUsuarios implements HttpHandler {
         // Extraigo la informacion si es un get o post o etc de la peticion
         String peticion = exchange.getRequestMethod();
         switch (peticion.toLowerCase()) {// toLowerCase: pasa a minuscula los datos
-            case "get":
-                manejadorPeticionGET(exchange);//obtener
-                break;
-            case "post":
-                manejadorPeticionPOST(exchange);//establecer
-                break;
-            case "put":
-                manejadorPeticionPUT(exchange);//modificar
-                break;
-            case "delete":
-                manejadorPeticionDELETE(exchange);//eliminar
-                break;
-            default:
-                manejadorError(exchange);
+            case "get" -> manejadorPeticionGET(exchange);//obtener
+            case "post" -> manejadorPeticionPOST(exchange);//establecer
+            case "put" -> manejadorPeticionPUT(exchange);//modificar
+            case "delete" -> manejadorPeticionDELETE(exchange);//eliminar
+            default -> manejadorError(exchange);
         }
     }
 
@@ -40,12 +28,10 @@ public class ManejadorUsuarios implements HttpHandler {
         String respuesta = usuarioDAO.mostrarUsuarios().toString();
 
         try {
-            exchange.sendResponseHeaders(200, respuesta.length());
+            exchange.sendResponseHeaders(200, respuesta.getBytes().length);
             OutputStream os = exchange.getResponseBody();
             os.write(respuesta.getBytes());
-            exchange.setAttribute("body", os);
             os.close();
-            exchange.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
