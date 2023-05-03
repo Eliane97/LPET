@@ -1,18 +1,12 @@
 package org.example;
 
 import org.example.DAO.ImplementacionUsuarioDAO;
-import org.example.model.Usuario;
-
-import java.sql.SQLException;
-import java.util.List;
+import org.example.DAO.UsuarioDAO;
+import org.example.HTTP.ServidorLPET;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        ImplementacionUsuarioDAO daoImplementado = new ImplementacionUsuarioDAO();
-        List<Usuario> guardadoListaUsuario = daoImplementado.mostrarUsuarios();
-
-        for (int i = 0; i < guardadoListaUsuario.size(); i++) {
-            System.out.println(guardadoListaUsuario.get(i));
-        }
+    public static void main(String[] args) {
+        ServidorLPET servidor = new ServidorLPET();
+        servidor.crearServidorHTTP();
     }
 }
