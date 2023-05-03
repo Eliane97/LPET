@@ -16,7 +16,7 @@ public class ImplementacionUsuarioDAO extends Conexion implements UsuarioDAO {
         try {
             conectar();
             Statement consulta = conexion.createStatement();
-            ResultSet respuesta = consulta.executeQuery("select * from Usuarios");
+            ResultSet respuesta = consulta.executeQuery("select * from usuarios");
 
             while (respuesta.next()) {
                 Usuario usuario = new Usuario();
