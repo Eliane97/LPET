@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ManejadorUsuarios implements HttpHandler {
-    String respuesta;
 
     @Override
     public void handle(HttpExchange exchange) {
@@ -38,13 +37,13 @@ public class ManejadorUsuarios implements HttpHandler {
 
     public void manejadorPeticionGET(HttpExchange exchange) {
         UsuarioDAO usuarioDAO = new ImplementacionUsuarioDAO();
-        respuesta = usuarioDAO.mostrarUsuarios().toString();
+        String respuesta = usuarioDAO.mostrarUsuarios().toString();
 
         try {
             exchange.sendResponseHeaders(200, respuesta.length());
             OutputStream os = exchange.getResponseBody();
             os.write(respuesta.getBytes());
-            exchange.setAttribute("body",os);
+            exchange.setAttribute("body", os);
             os.close();
             exchange.close();
         } catch (IOException e) {
