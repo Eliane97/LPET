@@ -14,6 +14,7 @@ public class ManejadorUsuarios implements HttpHandler {
     public void handle(HttpExchange exchange) {
         // Extraigo la informacion si es un get o post o etc de la peticion
         String peticion = exchange.getRequestMethod();
+        // Dependiendo de que tipo de peticion sea; realizara el metodo correspondiente a dicha peticion
         switch (peticion.toLowerCase()) {// toLowerCase: pasa a minuscula los datos
             case "get" -> manejadorPeticionGET(exchange);//obtener
             case "post" -> manejadorPeticionPOST(exchange);//establecer
@@ -23,6 +24,7 @@ public class ManejadorUsuarios implements HttpHandler {
         }
     }
 
+    //Detallo lo que tiene que hacer cada metodo post,get etc cuando se tenga que ejecutar
     public void manejadorPeticionGET(HttpExchange exchange) {
         UsuarioDAO usuarioDAO = new ImplementacionUsuarioDAO();
         String respuesta = usuarioDAO.mostrarUsuarios().toString();

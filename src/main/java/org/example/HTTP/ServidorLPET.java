@@ -21,7 +21,7 @@ public class ServidorLPET {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        // Manejo de urls
+        // Manejo de url: Usuarios y trae y muestra datos de una lista de Usuarios
         servidor.createContext("/usuarios", new ManejadorUsuarios());
         servidor.start();
     }
